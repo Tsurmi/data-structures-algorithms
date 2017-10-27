@@ -23,6 +23,7 @@ class Queue{
   popSearch(searchItem){
     for(let i=0; i< this.size; i+=1){
       const dataItem = this.data.splice(0,1)
+      this.size -= 1
       if(dataItem === searchItem){
         return dataItem
       }
