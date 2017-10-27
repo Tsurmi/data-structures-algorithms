@@ -21,9 +21,8 @@ class Queue{
     return "ERR: No data to pop."
   }
   popSearch(searchItem){
-    const tempData = [].concat(this.data)
     for(let i=0; i< this.size; i+=1){
-      const dataItem = tempData.splice(0,1)
+      const dataItem = this.data.splice(0,1)
       if(dataItem === searchItem){
         return dataItem
       }
