@@ -13,9 +13,12 @@ class Stack{
     return "ERR: Exceeded stack limit."
   }
   pop(){
-    const item = this.data.pop()
-    this.size -= 1
-    return item
+    if(this.size){
+      const item = this.data.pop()
+      this.size -= 1
+      return item
+    }
+    return "ERR: No data present to pop."
   }
   popSearch(searchItem){
     const tempData = [].concat(this.data)
@@ -36,6 +39,11 @@ for(let i=0; i<6; i++){
   stack.push(i)
 }
 
+// 
+// console.log("I FOUND: ",stack.popSearch(2))
+// console.log("I DIDN'T FIND: ",stack.popSearch(2))
 
-console.log("I FOUND: ",stack.popSearch(2))
-console.log("I DIDN'T FIND: ",stack.popSearch(2))
+
+for(let i=0; i<6; i++){
+  console.log(stack.pop())
+}

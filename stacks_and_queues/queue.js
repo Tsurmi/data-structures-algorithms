@@ -13,10 +13,22 @@ class Queue{
     return "ERR: Exceeded allocated queue limit."
   }
   pop(){
-    let item = this.data.splice(0,1)
-    console.log("SPLICING",item)
-    this.size -= 1
-    return item[0]
+    if(this.size){
+      let item = this.data.splice(0,1)
+      this.size -= 1
+      return item[0]
+    }
+    return "ERR: No data to pop."
+  }
+  popSearch(searchItem){
+    const tempData = [].concat(this.data)
+    for(let i=0; i< this.size; i+=1){
+      const dataItem = tempData.splice(0,1)
+      if(dataItem === searchItem){
+        return dataItem
+      }
+    }
+    return "ERR: Item not found."
   }
 }
 
@@ -26,8 +38,6 @@ for(let i=0; i<6; i+=1){
   queue.push(i)
 }
 
-console.log(queue)
-
-console.log(queue.pop())
-
-console.log(queue)
+for(let i=0; i<6; i++){
+  console.log(queue.pop())
+}
