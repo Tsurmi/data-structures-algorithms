@@ -22,12 +22,13 @@ class Queue{
   }
   popSearch(searchItem){
     for(let i=0; i< this.size; i+=1){
-      const dataItem = this.data.splice(0,1)
-      this.size -= 1
+      const dataItem = this.data.splice(0,1)[0]
       if(dataItem === searchItem){
+        this.size = this.data.length
         return dataItem
       }
     }
+    this.size = this.data.length
     return "ERR: Item not found."
   }
 }
@@ -38,6 +39,10 @@ for(let i=0; i<6; i+=1){
   queue.push(i)
 }
 
-for(let i=0; i<6; i++){
-  console.log(queue.pop())
-}
+console.log(queue)
+console.log(queue.popSearch(2))
+console.log(queue)
+
+// for(let i=0; i<6; i++){
+//   console.log(queue.pop())
+// }
