@@ -21,13 +21,14 @@ class Stack{
     return "ERR: No data present to pop."
   }
   popSearch(searchItem){
-    const tempData = [].concat(this.data)
     for(let i=this.size-1; i>= 0; i-=1){
-      const dataItem = tempData.pop()
+      const dataItem = this.data.pop()
       if(dataItem === searchItem){
+        this.size = this.data.length
         return dataItem
       }
     }
+    this.size = this.data.length
     return "ERR: Item not found."
   }
 
@@ -39,7 +40,7 @@ for(let i=0; i<6; i++){
   stack.push(i)
 }
 
-// 
+//
 // console.log("I FOUND: ",stack.popSearch(2))
 // console.log("I DIDN'T FIND: ",stack.popSearch(2))
 
